@@ -1,13 +1,27 @@
 const RESTRICTED_MODULES = {
   paths: [
-    { name: 'dayjs', message: 'Please use lib/date/dayjs.ts instead of directly importing dayjs' },
-    { name: '@chakra-ui/icons', message: 'Using @chakra-ui/icons is prohibited. Please use regular svg-icon instead (see examples in "icons/" folder)' },
-    { name: '@metamask/providers', message: 'Please lazy-load @metamask/providers or use useProvider hook instead' },
-    { name: '@metamask/post-message-stream', message: 'Please lazy-load @metamask/post-message-stream or use useProvider hook instead' },
+    {
+      name: 'dayjs',
+      message:
+        'Please use lib/date/dayjs.ts instead of directly importing dayjs',
+    },
+    {
+      name: '@chakra-ui/icons',
+      message:
+        'Using @chakra-ui/icons is prohibited. Please use regular svg-icon instead (see examples in "icons/" folder)',
+    },
+    {
+      name: '@metamask/providers',
+      message:
+        'Please lazy-load @metamask/providers or use useProvider hook instead',
+    },
+    {
+      name: '@metamask/post-message-stream',
+      message:
+        'Please lazy-load @metamask/post-message-stream or use useProvider hook instead',
+    },
   ],
-  patterns: [
-    'icons/*',
-  ],
+  patterns: [ 'icons/*' ],
 };
 
 module.exports = {
@@ -54,15 +68,19 @@ module.exports = {
     },
   },
   rules: {
-    '@typescript-eslint/array-type': [ 'error', {
-      'default': 'generic',
-      readonly: 'generic',
-    } ],
+    '@typescript-eslint/array-type': [
+      'error',
+      {
+        'default': 'generic',
+        readonly: 'generic',
+      },
+    ],
     '@typescript-eslint/brace-style': [ 'error', '1tbs' ],
     '@typescript-eslint/consistent-type-imports': [ 'error' ],
     '@typescript-eslint/indent': [ 'error', 2 ],
     '@typescript-eslint/member-delimiter-style': [ 'error' ],
-    '@typescript-eslint/naming-convention': [ 'error',
+    '@typescript-eslint/naming-convention': [
+      'error',
       {
         selector: 'default',
         format: [ 'camelCase' ],
@@ -119,7 +137,10 @@ module.exports = {
     ],
     '@typescript-eslint/no-duplicate-imports': [ 'error' ],
     '@typescript-eslint/no-empty-function': [ 'off' ],
-    '@typescript-eslint/no-unused-vars': [ 'error', { ignoreRestSiblings: true } ],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { ignoreRestSiblings: true },
+    ],
     '@typescript-eslint/no-use-before-define': 'off',
     '@typescript-eslint/no-useless-constructor': [ 'error' ],
     '@typescript-eslint/type-annotation-spacing': 'error',
@@ -143,35 +164,48 @@ module.exports = {
     eqeqeq: [ 'error', 'allow-null' ],
     'id-match': [ 'error', '^[\\w$]+$' ],
     'jsx-quotes': [ 'error', 'prefer-double' ],
-    'key-spacing': [ 'error', {
-      beforeColon: false,
-      afterColon: true,
-    } ],
+    'key-spacing': [
+      'error',
+      {
+        beforeColon: false,
+        afterColon: true,
+      },
+    ],
     'keyword-spacing': 'error',
     'linebreak-style': [ 'error', 'unix' ],
-    'lines-around-comment': [ 'error', {
-      beforeBlockComment: true,
-      allowBlockStart: true,
-    } ],
+    'lines-around-comment': [
+      'error',
+      {
+        beforeBlockComment: true,
+        allowBlockStart: true,
+      },
+    ],
     'max-len': [ 'error', 160, 4 ],
     'no-console': 'error',
     'no-empty': [ 'error', { allowEmptyCatch: true } ],
-    'no-implicit-coercion': [ 'error', {
-      number: true,
-      'boolean': true,
-      string: true,
-    } ],
-    'no-mixed-operators': [ 'error', {
-      groups: [
-        [ '&&', '||' ],
-      ],
-    } ],
+    'no-implicit-coercion': [
+      'error',
+      {
+        number: true,
+        'boolean': true,
+        string: true,
+      },
+    ],
+    'no-mixed-operators': [
+      'error',
+      {
+        groups: [ [ '&&', '||' ] ],
+      },
+    ],
     'no-mixed-spaces-and-tabs': 'error',
-    'no-multiple-empty-lines': [ 'error', {
-      max: 1,
-      maxEOF: 0,
-      maxBOF: 0,
-    } ],
+    'no-multiple-empty-lines': [
+      'error',
+      {
+        max: 1,
+        maxEOF: 0,
+        maxBOF: 0,
+      },
+    ],
     'no-multi-spaces': 'error',
     'no-multi-str': 'error',
     'no-nested-ternary': 'error',
@@ -183,13 +217,21 @@ module.exports = {
     'one-var': [ 'error', 'never' ],
     'operator-linebreak': [ 'error', 'after' ],
     'prefer-const': 'error',
-    'quote-props': [ 'error', 'as-needed', {
-      keywords: true,
-      numbers: true,
-    } ],
-    quotes: [ 'error', 'single', {
-      allowTemplateLiterals: true,
-    } ],
+    'quote-props': [
+      'error',
+      'as-needed',
+      {
+        keywords: true,
+        numbers: true,
+      },
+    ],
+    quotes: [
+      'error',
+      'single',
+      {
+        allowTemplateLiterals: true,
+      },
+    ],
     'space-before-function-paren': [ 'error', 'never' ],
     'space-before-blocks': [ 'error', 'always' ],
     'space-in-parens': [ 'error', 'never' ],
@@ -206,9 +248,7 @@ module.exports = {
         groups: [
           'module',
           '/types/',
-          [
-            '/^nextjs/',
-          ],
+          [ '/^nextjs/' ],
           [
             '/^configs/',
             '/^data/',
@@ -230,47 +270,66 @@ module.exports = {
     ],
 
     'no-restricted-imports': [ 'error', RESTRICTED_MODULES ],
-    'no-restricted-properties': [ 2, {
-      object: 'process',
-      property: 'env',
-      // FIXME: restrict the rule only NEXT_PUBLIC variables
-      message: 'Please use configs/app/index.ts to import any NEXT_PUBLIC environment variables. For other properties please disable this rule for a while.',
-    } ],
+    'no-restricted-properties': [
+      2,
+      {
+        object: 'process',
+        property: 'env',
+        // FIXME: restrict the rule only NEXT_PUBLIC variables
+        message:
+          'Please use configs/app/index.ts to import any NEXT_PUBLIC environment variables. For other properties please disable this rule for a while.',
+      },
+    ],
 
     'react/jsx-key': 'error',
-    'react/jsx-no-bind': [ 'error', {
-      ignoreRefs: true,
-    } ],
-    'react/jsx-curly-brace-presence': [ 'error', {
-      props: 'never',
-      children: 'never',
-    } ],
-    'react/jsx-curly-spacing': [ 'error', {
-      when: 'always',
-      children: true,
-      spacing: {
-        objectLiterals: 'never',
+    'react/jsx-no-bind': [
+      'error',
+      {
+        ignoreRefs: true,
       },
-    } ],
+    ],
+    'react/jsx-curly-brace-presence': [
+      'error',
+      {
+        props: 'never',
+        children: 'never',
+      },
+    ],
+    'react/jsx-curly-spacing': [
+      'error',
+      {
+        when: 'always',
+        children: true,
+        spacing: {
+          objectLiterals: 'never',
+        },
+      },
+    ],
     'react/jsx-equals-spacing': [ 'error', 'never' ],
     'react/jsx-fragments': [ 'error', 'syntax' ],
     'react/jsx-no-duplicate-props': 'error',
     'react/jsx-no-target-blank': 'off',
     'react/jsx-no-useless-fragment': 'error',
-    'react/jsx-tag-spacing': [ 'error', {
-      afterOpening: 'never',
-      beforeSelfClosing: 'never',
-      closingSlash: 'never',
-    } ],
-    'react/jsx-wrap-multilines': [ 'error', {
-      declaration: 'parens-new-line',
-      assignment: 'parens-new-line',
-      'return': 'parens-new-line',
-      arrow: 'parens-new-line',
-      condition: 'parens-new-line',
-      logical: 'parens-new-line',
-      prop: 'parens-new-line',
-    } ],
+    'react/jsx-tag-spacing': [
+      'error',
+      {
+        afterOpening: 'never',
+        beforeSelfClosing: 'never',
+        closingSlash: 'never',
+      },
+    ],
+    'react/jsx-wrap-multilines': [
+      'error',
+      {
+        declaration: 'parens-new-line',
+        assignment: 'parens-new-line',
+        'return': 'parens-new-line',
+        arrow: 'parens-new-line',
+        condition: 'parens-new-line',
+        logical: 'parens-new-line',
+        prop: 'parens-new-line',
+      },
+    ],
     'react/no-access-state-in-setstate': 'error',
     'react/no-deprecated': 'error',
     'react/no-direct-mutation-state': 'error',
@@ -292,13 +351,19 @@ module.exports = {
     'regexp/no-empty-alternative': 'error',
     'regexp/no-empty-capturing-group': 'error',
     'regexp/no-lazy-ends': 'error',
-    'regexp/no-obscure-range': [ 'error', {
-      allowed: [ 'alphanumeric' ],
-    } ],
+    'regexp/no-obscure-range': [
+      'error',
+      {
+        allowed: [ 'alphanumeric' ],
+      },
+    ],
     'regexp/no-optional-assertion': 'error',
-    'regexp/no-unused-capturing-group': [ 'error', {
-      fixable: true,
-    } ],
+    'regexp/no-unused-capturing-group': [
+      'error',
+      {
+        fixable: true,
+      },
+    ],
     'regexp/no-useless-character-class': 'error',
     'regexp/no-useless-dollar-replacements': 'error',
 
