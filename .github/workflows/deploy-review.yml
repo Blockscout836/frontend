@@ -10,24 +10,24 @@ jobs:
     outputs:
       REF_SLUG: ${{ steps.output.outputs.REF_SLUG }}
     steps:
-      -   name: Inject slug/short variables
-          uses: rlespinasse/github-slug-action@v4.4.1
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v4.4.1
 
-      -   name: Set output
-          id: output
-          run: echo "REF_SLUG=${{ env.GITHUB_REF_NAME_SLUG }}" >> $GITHUB_OUTPUT
+      - name: Set output
+        id: output
+        run: echo "REF_SLUG=${{ env.GITHUB_REF_NAME_SLUG }}" >> $GITHUB_OUTPUT
 
   publish_image:
     name: Publish Docker image
     needs: make_slug
-    uses: './.github/workflows/publish-image.yml'
+    uses: "./.github/workflows/publish-image.yml"
     with:
-        tags: ghcr.io/blockscout/frontend:review-${{ needs.make_slug.outputs.REF_SLUG }}
+      tags: ghcr.io/blockscout836/frontend:review-${{ needs.make_slug.outputs.REF_SLUG }}
     secrets: inherit
 
   deploy_review:
     name: Deploy frontend
-    needs: [ make_slug, publish_image ]
+    needs: [make_slug, publish_image]
     uses: blockscout/blockscout-ci-cd/.github/workflows/deploy_helmfile.yaml@master
     with:
       appName: review-${{ needs.make_slug.outputs.REF_SLUG }}
