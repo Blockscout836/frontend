@@ -5,6 +5,8 @@ You are free to clone the repo and make any changes to the application code that
 For running app container from freshly built image do
 ```sh
 docker run -p 3000:3000 --env-file <path-to-your-env-file> <your-image-tag>
-```
+
+# docker run -p 3000:3000 --env-file <path-to-your-env-file> ghcr.io/Blockscout836/frontend:latest
+```   
 
 *Disclaimer* Do not try to generate production build of the app on your local machine (outside the docker). The app will not work as you would expect.

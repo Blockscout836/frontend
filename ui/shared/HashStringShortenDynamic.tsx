@@ -12,11 +12,6 @@ import type { As } from '@chakra-ui/react';
 import { Tooltip, chakra } from '@chakra-ui/react';
 import _debounce from 'lodash/debounce';
 import React, { useCallback, useEffect, useRef } from 'react';
-import type { FontFace } from 'use-font-face-observer';
-import useFontFaceObserver from 'use-font-face-observer';
-
-import { BODY_TYPEFACE, HEADING_TYPEFACE } from 'theme/foundations/typography';
-
 const TAIL_LENGTH = 4;
 const HEAD_MIN_LENGTH = 4;
 
@@ -31,11 +26,10 @@ interface Props {
 const HashStringShortenDynamic = ({ hash, fontWeight = '400', isTooltipDisabled, tailLength = TAIL_LENGTH, as = 'span' }: Props) => {
   const elementRef = useRef<HTMLSpanElement>(null);
   const [ displayedString, setDisplayedString ] = React.useState(hash);
-
-  const isFontFaceLoaded = useFontFaceObserver([
-    { family: BODY_TYPEFACE, weight: String(fontWeight) as FontFace['weight'] },
-    { family: HEADING_TYPEFACE, weight: String(fontWeight) as FontFace['weight'] },
-  ]);
+  // const isFontFaceLoaded = useFontFaceObserver([
+  //   { family: BODY_TYPEFACE, weight: String(fontWeight) as FontFace['weight'] },
+  //   { family: HEADING_TYPEFACE, weight: String(fontWeight) as FontFace['weight'] },
+  // ]);
 
   const calculateString = useCallback(() => {
     const parent = elementRef?.current?.parentNode as HTMLElement;
@@ -78,7 +72,7 @@ const HashStringShortenDynamic = ({ hash, fontWeight = '400', isTooltipDisabled,
   // that's why there are separate useEffect hooks
   useEffect(() => {
     calculateString();
-  }, [ calculateString, isFontFaceLoaded ]);
+  }, [ calculateString ]);
 
   useEffect(() => {
     const resizeHandler = _debounce(calculateString, 100);
