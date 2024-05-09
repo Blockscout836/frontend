@@ -1,16 +1,26 @@
 const RESTRICTED_MODULES = {
   paths: [
     {
+<<<<<<< HEAD
       name: "dayjs",
       message:
         "Please use lib/date/dayjs.ts instead of directly importing dayjs",
     },
     {
       name: "@chakra-ui/icons",
+=======
+      name: 'dayjs',
+      message:
+        'Please use lib/date/dayjs.ts instead of directly importing dayjs',
+    },
+    {
+      name: '@chakra-ui/icons',
+>>>>>>> a6b6d8007a13371e4d53f61956adcc5cc67a3ee8
       message:
         'Using @chakra-ui/icons is prohibited. Please use regular svg-icon instead (see examples in "icons/" folder)',
     },
     {
+<<<<<<< HEAD
       name: "@metamask/providers",
       message:
         "Please lazy-load @metamask/providers or use useProvider hook instead",
@@ -22,6 +32,19 @@ const RESTRICTED_MODULES = {
     },
   ],
   patterns: ["icons/*"],
+=======
+      name: '@metamask/providers',
+      message:
+        'Please lazy-load @metamask/providers or use useProvider hook instead',
+    },
+    {
+      name: '@metamask/post-message-stream',
+      message:
+        'Please lazy-load @metamask/post-message-stream or use useProvider hook instead',
+    },
+  ],
+  patterns: [ 'icons/*' ],
+>>>>>>> a6b6d8007a13371e4d53f61956adcc5cc67a3ee8
 };
 
 module.exports = {
@@ -68,8 +91,24 @@ module.exports = {
     },
   },
   rules: {
+<<<<<<< HEAD
     "@typescript-eslint/array-type": [
       "error",
+=======
+    '@typescript-eslint/array-type': [
+      'error',
+      {
+        'default': 'generic',
+        readonly: 'generic',
+      },
+    ],
+    '@typescript-eslint/brace-style': [ 'error', '1tbs' ],
+    '@typescript-eslint/consistent-type-imports': [ 'error' ],
+    '@typescript-eslint/indent': [ 'error', 2 ],
+    '@typescript-eslint/member-delimiter-style': [ 'error' ],
+    '@typescript-eslint/naming-convention': [
+      'error',
+>>>>>>> a6b6d8007a13371e4d53f61956adcc5cc67a3ee8
       {
         default: "generic",
         readonly: "generic",
@@ -135,6 +174,7 @@ module.exports = {
         leadingUnderscore: "allow",
       },
     ],
+<<<<<<< HEAD
     "@typescript-eslint/no-duplicate-imports": ["error"],
     "@typescript-eslint/no-empty-function": ["off"],
     "@typescript-eslint/no-unused-vars": [
@@ -145,6 +185,18 @@ module.exports = {
     "@typescript-eslint/no-useless-constructor": ["error"],
     "@typescript-eslint/type-annotation-spacing": "error",
     "@typescript-eslint/no-explicit-any": ["error", { ignoreRestArgs: true }],
+=======
+    '@typescript-eslint/no-duplicate-imports': [ 'error' ],
+    '@typescript-eslint/no-empty-function': [ 'off' ],
+    '@typescript-eslint/no-unused-vars': [
+      'error',
+      { ignoreRestSiblings: true },
+    ],
+    '@typescript-eslint/no-use-before-define': 'off',
+    '@typescript-eslint/no-useless-constructor': [ 'error' ],
+    '@typescript-eslint/type-annotation-spacing': 'error',
+    '@typescript-eslint/no-explicit-any': [ 'error', { ignoreRestArgs: true } ],
+>>>>>>> a6b6d8007a13371e4d53f61956adcc5cc67a3ee8
 
     // disabled in favor of @typescript-eslint
     "brace-style": "off",
@@ -154,6 +206,7 @@ module.exports = {
     "no-use-before-define": "off",
     "no-useless-constructor": "off",
 
+<<<<<<< HEAD
     "array-bracket-spacing": ["error", "always"],
     "arrow-spacing": ["error", { before: true, after: true }],
     "comma-dangle": ["error", "always-multiline"],
@@ -166,6 +219,97 @@ module.exports = {
     "jsx-quotes": ["error", "prefer-double"],
     "key-spacing": [
       "error",
+=======
+    'array-bracket-spacing': [ 'error', 'always' ],
+    'arrow-spacing': [ 'error', { before: true, after: true } ],
+    'comma-dangle': [ 'error', 'always-multiline' ],
+    'comma-spacing': [ 'error' ],
+    'comma-style': [ 'error', 'last' ],
+    curly: [ 'error', 'all' ],
+    'eol-last': 'error',
+    eqeqeq: [ 'error', 'allow-null' ],
+    'id-match': [ 'error', '^[\\w$]+$' ],
+    'jsx-quotes': [ 'error', 'prefer-double' ],
+    'key-spacing': [
+      'error',
+      {
+        beforeColon: false,
+        afterColon: true,
+      },
+    ],
+    'keyword-spacing': 'error',
+    'linebreak-style': [ 'error', 'unix' ],
+    'lines-around-comment': [
+      'error',
+      {
+        beforeBlockComment: true,
+        allowBlockStart: true,
+      },
+    ],
+    'max-len': [ 'error', 160, 4 ],
+    'no-console': 'error',
+    'no-empty': [ 'error', { allowEmptyCatch: true } ],
+    'no-implicit-coercion': [
+      'error',
+      {
+        number: true,
+        'boolean': true,
+        string: true,
+      },
+    ],
+    'no-mixed-operators': [
+      'error',
+      {
+        groups: [ [ '&&', '||' ] ],
+      },
+    ],
+    'no-mixed-spaces-and-tabs': 'error',
+    'no-multiple-empty-lines': [
+      'error',
+      {
+        max: 1,
+        maxEOF: 0,
+        maxBOF: 0,
+      },
+    ],
+    'no-multi-spaces': 'error',
+    'no-multi-str': 'error',
+    'no-nested-ternary': 'error',
+    'no-trailing-spaces': 'error',
+    'no-spaced-func': 'error',
+    'no-with': 'error',
+    'object-curly-spacing': [ 'error', 'always' ],
+    'object-shorthand': 'off',
+    'one-var': [ 'error', 'never' ],
+    'operator-linebreak': [ 'error', 'after' ],
+    'prefer-const': 'error',
+    'quote-props': [
+      'error',
+      'as-needed',
+      {
+        keywords: true,
+        numbers: true,
+      },
+    ],
+    quotes: [
+      'error',
+      'single',
+      {
+        allowTemplateLiterals: true,
+      },
+    ],
+    'space-before-function-paren': [ 'error', 'never' ],
+    'space-before-blocks': [ 'error', 'always' ],
+    'space-in-parens': [ 'error', 'never' ],
+    'space-infix-ops': 'error',
+    'space-unary-ops': 'off',
+    'template-curly-spacing': [ 'error', 'always' ],
+    'wrap-iife': [ 'error', 'inside' ],
+    semi: [ 'error', 'always' ],
+
+    'import-helpers/order-imports': [
+      'error',
+>>>>>>> a6b6d8007a13371e4d53f61956adcc5cc67a3ee8
       {
         beforeColon: false,
         afterColon: true,
@@ -247,6 +391,7 @@ module.exports = {
       {
         newlinesBetween: "always",
         groups: [
+<<<<<<< HEAD
           "module",
           "/types/",
           ["/^nextjs/"],
@@ -265,11 +410,32 @@ module.exports = {
             "/^ui/",
           ],
           ["parent", "sibling", "index"],
+=======
+          'module',
+          '/types/',
+          [ '/^nextjs/' ],
+          [
+            '/^configs/',
+            '/^data/',
+            '/^deploy/',
+            '/^icons/',
+            '/^jest/',
+            '/^lib/',
+            '/^mocks/',
+            '/^pages/',
+            '/^playwright/',
+            '/^stubs/',
+            '/^theme/',
+            '/^ui/',
+          ],
+          [ 'parent', 'sibling', 'index' ],
+>>>>>>> a6b6d8007a13371e4d53f61956adcc5cc67a3ee8
         ],
         alphabetize: { order: "asc", ignoreCase: true },
       },
     ],
 
+<<<<<<< HEAD
     "no-restricted-imports": ["error", RESTRICTED_MODULES],
     "no-restricted-properties": [
       2,
@@ -344,6 +510,105 @@ module.exports = {
     "react/void-dom-elements-no-children": "error",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
+=======
+    'no-restricted-imports': [ 'error', RESTRICTED_MODULES ],
+    'no-restricted-properties': [
+      2,
+      {
+        object: 'process',
+        property: 'env',
+        // FIXME: restrict the rule only NEXT_PUBLIC variables
+        message:
+          'Please use configs/app/index.ts to import any NEXT_PUBLIC environment variables. For other properties please disable this rule for a while.',
+      },
+    ],
+
+    'react/jsx-key': 'error',
+    'react/jsx-no-bind': [
+      'error',
+      {
+        ignoreRefs: true,
+      },
+    ],
+    'react/jsx-curly-brace-presence': [
+      'error',
+      {
+        props: 'never',
+        children: 'never',
+      },
+    ],
+    'react/jsx-curly-spacing': [
+      'error',
+      {
+        when: 'always',
+        children: true,
+        spacing: {
+          objectLiterals: 'never',
+        },
+      },
+    ],
+    'react/jsx-equals-spacing': [ 'error', 'never' ],
+    'react/jsx-fragments': [ 'error', 'syntax' ],
+    'react/jsx-no-duplicate-props': 'error',
+    'react/jsx-no-target-blank': 'off',
+    'react/jsx-no-useless-fragment': 'error',
+    'react/jsx-tag-spacing': [
+      'error',
+      {
+        afterOpening: 'never',
+        beforeSelfClosing: 'never',
+        closingSlash: 'never',
+      },
+    ],
+    'react/jsx-wrap-multilines': [
+      'error',
+      {
+        declaration: 'parens-new-line',
+        assignment: 'parens-new-line',
+        'return': 'parens-new-line',
+        arrow: 'parens-new-line',
+        condition: 'parens-new-line',
+        logical: 'parens-new-line',
+        prop: 'parens-new-line',
+      },
+    ],
+    'react/no-access-state-in-setstate': 'error',
+    'react/no-deprecated': 'error',
+    'react/no-direct-mutation-state': 'error',
+    'react/no-find-dom-node': 'off',
+    'react/no-redundant-should-component-update': 'error',
+    'react/no-render-return-value': 'error',
+    'react/no-string-refs': 'off',
+    'react/no-unknown-property': 'error',
+    'react/no-unused-state': 'error',
+    'react/require-optimization': [ 'error' ],
+    'react/void-dom-elements-no-children': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'error',
+
+    'regexp/confusing-quantifier': 'error',
+    'regexp/control-character-escape': 'error',
+    'regexp/negation': 'error',
+    'regexp/no-dupe-disjunctions': 'error',
+    'regexp/no-empty-alternative': 'error',
+    'regexp/no-empty-capturing-group': 'error',
+    'regexp/no-lazy-ends': 'error',
+    'regexp/no-obscure-range': [
+      'error',
+      {
+        allowed: [ 'alphanumeric' ],
+      },
+    ],
+    'regexp/no-optional-assertion': 'error',
+    'regexp/no-unused-capturing-group': [
+      'error',
+      {
+        fixable: true,
+      },
+    ],
+    'regexp/no-useless-character-class': 'error',
+    'regexp/no-useless-dollar-replacements': 'error',
+>>>>>>> a6b6d8007a13371e4d53f61956adcc5cc67a3ee8
 
     "regexp/confusing-quantifier": "error",
     "regexp/control-character-escape": "error",

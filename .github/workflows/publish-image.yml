@@ -40,7 +40,11 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
+<<<<<<< HEAD
           images: ghcr.io/Blockscout836/frontend
+=======
+          images: ghcr.io/blockscout836/frontend
+>>>>>>> a6b6d8007a13371e4d53f61956adcc5cc67a3ee8
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
@@ -67,7 +71,11 @@ jobs:
           file: ./Dockerfile
           push: true
           cache-from: type=gha
+<<<<<<< HEAD
           tags: ${{ steps.meta.outputs.tags }}
+=======
+          tags: ${{ inputs.tags || steps.meta.outputs.tags }}
+>>>>>>> a6b6d8007a13371e4d53f61956adcc5cc67a3ee8
           platforms: ${{ inputs.platforms }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |

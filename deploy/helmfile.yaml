@@ -1,5 +1,5 @@
 environments:
-  {{ .Environment.Name }}:
+  ? { { .Environment.Name } }
 ---
 helmDefaults:
   timeout: 600
@@ -24,9 +24,9 @@ releases:
     labels:
       app: front
     values:
-    - values/main/values.yaml
-    - global:
-        env: "main"
+      - values/main/values.yaml
+      - global:
+          env: "main"
   # Deploy l2-optimism-goerli
   - name: bs-stack
     chart: blockscout/blockscout-stack
@@ -35,9 +35,9 @@ releases:
     labels:
       app: l2-optimism-goerli
     values:
-    - values/l2-optimism-goerli/values.yaml
-    - global:
-        env: "optimism-goerli"
+      - values/l2-optimism-goerli/values.yaml
+      - global:
+          env: "optimism-goerli"
   # Deploy review L2
   - name: reg-secret
     chart: bedag/raw
@@ -46,13 +46,13 @@ releases:
       app: review-l2-{{ requiredEnv "GITHUB_REF_NAME_SLUG" }}
     values:
       - resources:
-        - apiVersion: v1
-          data:
-            .dockerconfigjson: ref+vault://deployment-values/blockscout/common?token_env=VAULT_TOKEN&address=https://vault.k8s.blockscout.com#/dockerRegistryCreds
-          kind: Secret
-          metadata:
-            name: regcred
-          type: kubernetes.io/dockerconfigjson
+          - apiVersion: v1
+            data:
+              .dockerconfigjson: ref+vault://deployment-values/blockscout836/common?token_env=VAULT_TOKEN&address=https://vault.k8s.blockscout.com#/dockerRegistryCreds
+            kind: Secret
+            metadata:
+              name: regcred
+            type: kubernetes.io/dockerconfigjson
   - name: bs-stack
     chart: blockscout/blockscout-stack
     version: 1.2.*
@@ -60,9 +60,9 @@ releases:
     labels:
       app: review-l2-{{ requiredEnv "GITHUB_REF_NAME_SLUG" }}
     values:
-    - values/review-l2/values.yaml.gotmpl
-    - global:
-        env: "review"
+      - values/review-l2/values.yaml.gotmpl
+      - global:
+          env: "review"
   # Deploy review
   - name: reg-secret
     chart: bedag/raw
@@ -71,13 +71,13 @@ releases:
       app: review-{{ requiredEnv "GITHUB_REF_NAME_SLUG" }}
     values:
       - resources:
-        - apiVersion: v1
-          data:
-            .dockerconfigjson: ref+vault://deployment-values/blockscout/common?token_env=VAULT_TOKEN&address=https://vault.k8s.blockscout.com#/dockerRegistryCreds
-          kind: Secret
-          metadata:
-            name: regcred
-          type: kubernetes.io/dockerconfigjson
+          - apiVersion: v1
+            data:
+              .dockerconfigjson: ref+vault://deployment-values/blockscout836/common?token_env=VAULT_TOKEN&address=https://vault.k8s.blockscout.com#/dockerRegistryCreds
+            kind: Secret
+            metadata:
+              name: regcred
+            type: kubernetes.io/dockerconfigjson
   - name: bs-stack
     chart: blockscout/blockscout-stack
     version: 1.2.*
@@ -85,6 +85,6 @@ releases:
     labels:
       app: review-{{ requiredEnv "GITHUB_REF_NAME_SLUG" }}
     values:
-    - values/review/values.yaml.gotmpl
-    - global:
-        env: "review"
+      - values/review/values.yaml.gotmpl
+      - global:
+          env: "review"
